@@ -1,0 +1,7 @@
+<p>item works!</p>
+<ng-template #template>
+  <h1 colory #directoryLink="colory">Template title</h1>
+  <button (click)="directoryLink.changeColor('green')">Change color</button>
+</ng-template>
+<ng-container *ngTemplateOutlet="template"></ng-container>
+<ng-container *ngComponentOutlet="myComponent"></ng-container>
