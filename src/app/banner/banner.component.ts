@@ -12,4 +12,8 @@ export class BannerComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  logMessage(): void {
+    console.log('Log message');
+  }
+
 }

@@ -1,7 +1,11 @@
-<p>item works!</p>
+<!-- <ng-content select=".content"></ng-content> -->
+<ng-content></ng-content>
+<p>VIEW</p>
 <ng-template #template>
-  <h1 colory #directoryLink="colory">Template title</h1>
-  <button (click)="directoryLink.changeColor('green')">Change color</button>
+<h1 colory #directoryLink="colory">Template title</h1>
+<button (click)="directoryLink.changeColor('green')">Change color</button>
 </ng-template>
 <ng-container *ngTemplateOutlet="template"></ng-container>
 <ng-container *ngComponentOutlet="myComponent"></ng-container>
+<button (click)="onClick()">Click me</button>
+<!-- <app-banner></app-banner> -->
