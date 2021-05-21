@@ -14,7 +14,7 @@ import {
   ViewContainerRef
 } from '@angular/core';
 import { Animal } from '../animal/animal';
-import { BannerComponent } from '../banner/banner.component';
+// import { BannerComponent } from '../banner/banner.component';
 
 @Component({
   selector: 'app-item',
@@ -25,11 +25,12 @@ export class ItemComponent implements OnInit, AfterViewInit, AfterContentInit {
   // @ContentChild('paragSelector') paragraphEl: ElementRef;
   // @ContentChild(OtherComponent) compOther: OtherComponent;    // получаем по селектору Класса компонента
   // @ContentChild(OtherComponent, { read: OtherComponent }) compOther: OtherComponent;
-  @ViewChild(BannerComponent, {static: false}) private bannerElement?: BannerComponent;
+  // @ViewChild(BannerComponent, {static: false}) private bannerElement?: BannerComponent;
   @ContentChildren(Animal) animals: QueryList<Animal> = new QueryList();
   // @ViewChildren() elements?: QueryList<Element>;
 
   public myComponent;
+  public textMsg = 'Reverse pipe works!';
 
   constructor(
     private view: ViewContainerRef,
@@ -38,10 +39,10 @@ export class ItemComponent implements OnInit, AfterViewInit, AfterContentInit {
     ) { }
 
   ngOnInit(): void {
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(BannerComponent);
-    this.view.createComponent(componentFactory);
+    // const componentFactory = this.componentFactoryResolver.resolveComponentFactory(BannerComponent);
+    // this.view.createComponent(componentFactory);
 
-    this.myComponent = BannerComponent;
+    // this.myComponent = BannerComponent;
   }
 
   ngAfterViewInit(): void {
@@ -53,8 +54,14 @@ export class ItemComponent implements OnInit, AfterViewInit, AfterContentInit {
 
   onClick(): void {
     // this.bannerElement.logMessage();
-    this.animals.forEach(it => it.sayHi());
-    console.log(this.title);
+    // this.animals.forEach(it => it.sayHi());
+    // console.log(this.title);
+    this.load();
+  }
+
+  async load(): Promise<void> {
+    const { BannerComponent } = await import('../banner/banner.component');
+    this.myComponent = BannerComponent;
   }
 
 }

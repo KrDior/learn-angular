@@ -13,5 +13,14 @@
   <script>
     screenLog.init();
   </script>
+  <my-ang-element name="Alice"></my-ang-element>
+  <my-ang-element name="Ilia"></my-ang-element>
+  <my-ang-element name="Ivan">
+    <p>Some content</p>
+  </my-ang-element>
+  <script>
+    const els = document.querySelectorAll('my-ang-element');
+    els.forEach(el => el.addEventListener('clicked', (event) => console.log(event.detail)))
+  </script>
 </body>
 </html>
