@@ -1,8 +1,38 @@
 <!-- <app-teams></app-teams> -->
-<app-item title="Simple title" *delay="1000; time: 1000, title: 'hello'">
+<!-- <app-item title="Simple title" *delay="1000; time: 1000, title: 'hello'">
   <div class="content">CONTENT</div>
   <p #paragSelector>Content paragraph</p>
   <app-cat></app-cat>
   <app-dog></app-dog>
   <app-rock></app-rock>
-</app-item>
+</app-item> -->
+<header>
+  <nav mat-tab-nav-bar>
+    <a
+      mat-tab-link
+      #rlaPP = "routerLinkActive"
+      [active] = "rlaPP.isActive"
+      routerLink = "/"
+      routerLinkActive
+    > Home</a>
+
+    <a
+      mat-tab-link
+      #rlaBP = "routerLinkActive"
+      [active] = "rlaBP.isActive"
+      routerLink = "/1"
+      routerLinkActive
+    > First</a>
+
+    <a
+      mat-tab-link
+      #rlaP = "routerLinkActive"
+      [active] = "rlaP.isActive"
+      routerLink = "/lazy"
+      routerLinkActive
+    > Second Lazy</a>
+  </nav>
+</header>
+<main [@myAnimation]="getRouterOutletState(o)">
+  <router-outlet #o="outlet"></router-outlet>
+</main>

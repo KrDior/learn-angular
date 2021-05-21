@@ -19,8 +19,13 @@
     <p>Some content</p>
   </my-ang-element>
   <script>
+    const el = document.querySelector('my-ang-element');
     const els = document.querySelectorAll('my-ang-element');
-    els.forEach(el => el.addEventListener('clicked', (event) => console.log(event.detail)))
+    els.forEach(el => el.addEventListener('clicked', (event) => console.log(event.detail)));
+
+    setTimeout(() => {
+      el.innerHTML = 'new inner text';
+    }, 5000);
   </script>
 </body>
 </html>

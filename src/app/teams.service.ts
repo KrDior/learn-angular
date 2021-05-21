@@ -1,15 +1,15 @@
 import {Injectable} from '@angular/core';
-import {teams} from './mock-data';
+import { teams } from './mock-data';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TeamsService {
 
   constructor() {
   }
 
-  getTeams() {
+  getTeams(): any {
     return teams;
   }
 }

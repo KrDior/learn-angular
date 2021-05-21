@@ -37,3 +37,34 @@ teams.component.ts
 app.module.ts
 ang-element.component.html
 ang-element.component.ts
+
+
+## 8) Dependency injection
+Service:
+`
+@Injectable({
+  providedIn: 'root', 'any', 'platform'
+})
+constructor(
+  @Optional @Self someService: ServiceType;
+  @Optional @SkipSelf someService: ServiceType;
+) {}
+`
+
+Component:
+`
+@Component({
+  selector: 'app-ang-element',
+  templateUrl: './ang-element.component.html',
+  styleUrls: ['./ang-element.component.scss'],
+  viewProviders: [SomeService]
+})
+export class AngElementComponent implements OnInit {}
+`
+
+Module:
+`
+providers: [ {provide: SomeService, useClass | useValue | useExisting: SomeClass],
+`
+
+## 9) Router Animation
