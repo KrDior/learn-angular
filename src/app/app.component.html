@@ -10,27 +10,27 @@
   <nav mat-tab-nav-bar>
     <a
       mat-tab-link
-      #rlaPP = "routerLinkActive"
-      [active] = "rlaPP.isActive"
       routerLink = "/"
       routerLinkActive
     > Home</a>
 
     <a
       mat-tab-link
-      #rlaBP = "routerLinkActive"
-      [active] = "rlaBP.isActive"
-      routerLink = "/1"
+      routerLink = "1"
       routerLinkActive
     > First</a>
 
     <a
       mat-tab-link
-      #rlaP = "routerLinkActive"
-      [active] = "rlaP.isActive"
-      routerLink = "/lazy"
+      routerLink = "2"
       routerLinkActive
-    > Second Lazy</a>
+    > Second</a>
+
+    <a
+    mat-tab-link
+    routerLink = "lazy"
+    routerLinkActive
+  > Lazy</a>
   </nav>
 </header>
 <main [@myAnimation]="getRouterOutletState(o)">

@@ -68,3 +68,10 @@ providers: [ {provide: SomeService, useClass | useValue | useExisting: SomeClass
 `
 
 ## 9) Router Animation
+animation
+app.component.ts
+
+## 9) Routing Lazy module loading
+app-routeing.module.ts
+lazy.module.ts
+mypreloading.service.ts
