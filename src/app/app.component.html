@@ -35,4 +35,9 @@
 </header>
 <main [@myAnimation]="getRouterOutletState(o)">
   <router-outlet #o="outlet"></router-outlet>
+
+  <button (click)="randomNumber()">random</button>
+  {{output1}}
+  <button (click)="findBigPrime()">heavy</button>
+  {{output2}}
 </main>

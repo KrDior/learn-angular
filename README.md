@@ -75,3 +75,8 @@ app.component.ts
 app-routeing.module.ts
 lazy.module.ts
 mypreloading.service.ts
+
+
+## 10) webWorker
+my-worker.worker.ts
+app.component.ts

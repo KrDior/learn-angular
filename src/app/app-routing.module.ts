@@ -10,7 +10,7 @@ const routes: Routes = [
   { path: '0', pathMatch: 'full', redirectTo: '1' },
   { path: '1', component: FirstComponent },
   { path: '2', component: SecondComponent },
-  { path: 'lazy', data: { nopreload: true },loadChildren: () => import('./lazy/lazy.module').then(m => m.LazyModule) }
+  { path: 'lazy', data: { nopreload: true }, loadChildren: () => import('./lazy/lazy.module').then(m => m.LazyModule) }
 ];
 
 @NgModule({
