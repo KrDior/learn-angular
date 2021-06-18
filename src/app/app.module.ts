@@ -19,6 +19,8 @@ import { createCustomElement } from '@angular/elements';
 import { AppRoutingModule } from './app-routing.module';
 import { FirstComponent } from './routes/first/first.component';
 import { SecondComponent } from './routes/second/second.component';
+import { InputSearchComponent } from './input-search/input-search.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import { SecondComponent } from './routes/second/second.component';
     ReversePipe,
     AngElementComponent,
     FirstComponent,
-    SecondComponent
+    SecondComponent,
+    InputSearchComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,6 +45,7 @@ import { SecondComponent } from './routes/second/second.component';
     SharedModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

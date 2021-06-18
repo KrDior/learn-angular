@@ -1,0 +1,12 @@
+<div class="input-wrapper">
+  <input type="text" class="input-search" (input)="onInputChange($event)">
+</div>
+<div class="item-wrapper">
+
+  <div *ngFor="let item of results$ | async">
+    <span>{{ item?.data?.thumbnail | json }}</span>
+    <div *ngIf="item?.data?.thumbnail !== 'default' && result?.data?.thumbnail !== 'self'" class="img-wrapper" (click)="consoleUrl(result?.data?.thumbnail)">
+      <img [src]="item?.data?.thumbnail" alt="">
+    </div>
+  </div>
+</div>
