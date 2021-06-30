@@ -1,12 +1,22 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, RouterOutlet } from '@angular/router';
+import { AnimalService } from './animal.service';
 import { myAnimation1 } from './animation/1';
+import { FlowerService } from './flower.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  animations: [ myAnimation1 ]
+  animations: [ myAnimation1 ],
+  providers: [
+    { provide: FlowerService, useValue: { emoji: '🌻' } },
+    // { provide: AnimalService, useValue: {emoji: '🐳'}},
+  ],
+  // viewProviders: [
+  //   { provide: FlowerService, useValue: { emoji: '🌻' } },
+  //   {provide: AnimalService, useValue: {emoji: '🐳'}}
+  // ]
 })
 export class AppComponent {
   public title = 'learn-angular';
@@ -16,7 +26,10 @@ export class AppComponent {
   private intervalId: ReturnType<typeof setTimeout>;
   private worker: Worker;
 
-  constructor() {
+  constructor(
+    public flower: FlowerService,
+    public animal: AnimalService
+  ) {
     this.worker = new Worker('./my-worker.worker.ts', { type: 'module'});
   }
 

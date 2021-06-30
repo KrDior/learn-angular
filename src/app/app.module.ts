@@ -21,6 +21,7 @@ import { FirstComponent } from './routes/first/first.component';
 import { SecondComponent } from './routes/second/second.component';
 import { InputSearchComponent } from './input-search/input-search.component';
 import { HttpClientModule } from '@angular/common/http';
+import { DiChildComponent } from './di-child/di-child.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { HttpClientModule } from '@angular/common/http';
     FirstComponent,
     SecondComponent,
     InputSearchComponent,
+    DiChildComponent,
   ],
   imports: [
     BrowserModule,
