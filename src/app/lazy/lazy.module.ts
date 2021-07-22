@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { LazyRoutingModule } from './lazy-routing.module';
 import { LazyComponent } from './lazy.component';
+import { FlowerService } from '../flower.service';
 
 
 @NgModule({
@@ -12,6 +13,9 @@ import { LazyComponent } from './lazy.component';
   imports: [
     CommonModule,
     LazyRoutingModule
-  ]
+  ],
+  providers: [
+    {provide: FlowerService, useValue: {emoji: '🌺'}}
+  ],
 })
 export class LazyModule { }

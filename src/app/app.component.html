@@ -1,11 +1,3 @@
-<!-- <app-teams></app-teams> -->
-<!-- <app-item title="Simple title" *delay="1000; time: 1000, title: 'hello'">
-  <div class="content">CONTENT</div>
-  <p #paragSelector>Content paragraph</p>
-  <app-cat></app-cat>
-  <app-dog></app-dog>
-  <app-rock></app-rock>
-</app-item> -->
 <header>
   <nav mat-tab-nav-bar>
     <a
@@ -13,6 +5,12 @@
       routerLink = "/"
       routerLinkActive
     > Home</a>
+
+    <a
+      mat-tab-link
+      routerLink = "twitter"
+      routerLinkActive
+    > Twitter</a>
 
     <a
       mat-tab-link
@@ -36,12 +34,20 @@
 <main [@myAnimation]="getRouterOutletState(o)">
   <router-outlet #o="outlet"></router-outlet>
 
-  <button (click)="randomNumber()">random</button>
+  <!-- <button (click)="randomNumber()">random</button>
   {{output1}}
   <button (click)="findBigPrime()">heavy</button>
-  {{output2}}
+  {{output2}} -->
 </main>
-<app-input-search></app-input-search>
+<!-- <app-input-search></app-input-search>
 <p>Parent: Emoji from FlowerService: {{flower.emoji}}</p>
 <p>Parent: Emoji from AnimalService: {{animal.emoji}}</p>
-<app-di-child></app-di-child>
+<app-di-child></app-di-child> -->
+<!-- <app-teams></app-teams> -->
+<!-- <app-item title="Simple title" *delay="2000; time: 1000, title: 'hello'">
+  <div class="content">CONTENT</div>
+  <p #paragSelector>Content paragraph</p>
+  <app-cat></app-cat>
+  <app-dog></app-dog>
+  <app-rock></app-rock>
+</app-item> -->

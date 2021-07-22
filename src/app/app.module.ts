@@ -22,6 +22,9 @@ import { SecondComponent } from './routes/second/second.component';
 import { InputSearchComponent } from './input-search/input-search.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DiChildComponent } from './di-child/di-child.component';
+import { TwitterComponent } from './twitter/twitter.component';
+import { CardComponent } from './card/card.component';
+import { FilterOnIdPipe } from './filter-on-id.pipe';
 
 @NgModule({
   declarations: [
@@ -40,6 +43,9 @@ import { DiChildComponent } from './di-child/di-child.component';
     SecondComponent,
     InputSearchComponent,
     DiChildComponent,
+    TwitterComponent,
+    CardComponent,
+    FilterOnIdPipe,
   ],
   imports: [
     BrowserModule,

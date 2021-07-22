@@ -1,0 +1,38 @@
+<button
+  #refreshBtn
+  class="refresh-btn"
+  mat-fab color="warn"
+  (click)="refreshCards()"
+>
+  <mat-icon>refresh</mat-icon>
+</button>
+<!-- <div *ngFor="let user of users$ | async | filterOnId: removedId">
+  <app-card
+    id = {{user.id}}
+    title = {{user.login}}
+    subtitle = {{user.id}}
+    text = {{user.repos_url}}
+    image = {{user?.avatar_url}}
+    (closeCard)="onCardClose($event)"
+  ></app-card>
+</div> -->
+<div class="header">
+  <h2>Who to follow</h2><a href="#" class="refresh">Refresh</a>
+</div>
+<ul class="suggestions">
+  <li class="suggestion1">
+      <img />
+      <a href="#" target="_blank" class="username">this will not be displayed</a>
+      <button #suggestionClose1 class="close close1">x</button>
+  </li>
+  <li class="suggestion2">
+      <img />
+      <a href="#" target="_blank" class="username">neither this</a>
+      <button href="#" class="close close2">x</button>
+  </li>
+  <li class="suggestion3">
+      <img />
+      <a href="#" target="_blank" class="username">nor this</a>
+      <button href="#" class="close close3">x</button>
+  </li>
+</ul>
