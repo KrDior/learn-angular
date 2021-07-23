@@ -5,7 +5,7 @@ import { debounceTime, map, mergeMap, startWith } from 'rxjs/operators';
 const API_URL = 'https://api.github.com/users?since=';
 
 export interface User {
-  id: string;
+  id: number;
   repos_url: string;
   avatar_url: string;
 }

@@ -5,7 +5,25 @@ import { fromEvent, Observable } from 'rxjs';
 import { map, startWith, take } from 'rxjs/operators';
 import { GitUsersService, User } from '../git-users.service';
 
-
+const mockedUsers = [  {
+  login: 'mojombo',
+  id: 1,
+  avatar_url: 'https://avatars.githubusercontent.com/u/1?v=4',
+  repos_url: 'https://api.github.com/users/mojombo/repos',
+},
+{
+  login: 'defunkt',
+  id: 2,
+  node_id: 'MDQ6VXNlcjI=',
+  avatar_url: 'https://avatars.githubusercontent.com/u/2?v=4',
+  repos_url: 'https://api.github.com/users/defunkt/repos',
+},
+{
+  login: 'pjhyett',
+  id: 3,
+  avatar_url: 'https://avatars.githubusercontent.com/u/3?v=4',
+  repos_url: 'https://api.github.com/users/pjhyett/repos',
+}];
 
 @Component({
   selector: 'app-twitter',
@@ -14,11 +32,10 @@ import { GitUsersService, User } from '../git-users.service';
 })
 export class TwitterComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('refreshBtn', { read: ElementRef }) refreshBtn: ElementRef;
-  @ViewChild('suggestionClose1') suggestionClose1: ElementRef;
   @ViewChildren('closeBtn', { read: ElementRef }) closeButtons!: QueryList<ElementRef>;
+  @ViewChildren('cardEl', { read: ElementRef }) cardsElements!: QueryList<ElementRef>;
 
   public userSubscriptions = [];
-  public removedId = 0;
   public cards: User[] = [];
 
   private refreshClickStream$: Observable<Event>;
@@ -53,20 +70,16 @@ export class TwitterComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private handleCloseButtonsSubscriptions(): void {
-    const closeBtnSub = this.closeButtons.changes.subscribe((closeButtons) => {
-      closeButtons.toArray().forEach(btn => {
-        this.closeButtonsStreams$.push(fromEvent(btn.nativeElement, 'click'));
-      });
-      this.runSubscriptionProcess();
-      closeBtnSub.unsubscribe();
+    this.closeButtons.toArray().forEach(btn => {
+      this.closeButtonsStreams$.push(fromEvent(btn.nativeElement, 'click'));
     });
+    this.runSubscriptionProcess();
 
   }
 
   private runSubscriptionProcess(): void {
     this.fillUserSubscriptions();
     this.handleUserSubscription();
-
   }
 
   private handleUserService(): void {
@@ -90,7 +103,8 @@ export class TwitterComponent implements OnInit, AfterViewInit, OnDestroy {
       ),
       this.responseStream$,
       ]).pipe(
-      map(([click, listUsers]) => this.getRandomUser(listUsers))
+        take(this.valueOfCards),
+        map(([click, listUsers]) => this.getRandomUser(listUsers))
     );
   }
 
@@ -107,11 +121,10 @@ export class TwitterComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private setUserCard(suggestedUser: User, cardOrder): void {
-    console.log(suggestedUser, cardOrder)
+    console.log(suggestedUser, cardOrder);
     this.cards[cardOrder] = suggestedUser;
   }
 
-  onCardClose(id: number): void {
-    this.removedId = id;
+  onCardClose(): void {
   }
 }
