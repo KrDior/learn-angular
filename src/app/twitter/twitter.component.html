@@ -6,35 +6,25 @@
   <mat-icon>refresh</mat-icon>
 </button>
 
-<ng-container *ngFor="let card of cards;">
-  <app-card
-    #cardEl
-    id = {{card?.id}}
-    title = {{card?.login}}
-    subtitle = {{card?.id}}
-    text = {{card?.repos_url}}
-    image = {{card?.avatar_url}}
-  ></app-card>
-
-</ng-container>
-<button
-  #closeBtn
-  class="close-btn"
-  mat-button
-  color="warn"
-  (click)="onCardClose()"
->Close</button>
-<button
-  #closeBtn
-  class="close-btn"
-  mat-button
-  color="warn"
-  (click)="onCardClose()"
->Close</button>
-<button
-  #closeBtn
-  class="close-btn"
-  mat-button
-  color="warn"
-  (click)="onCardClose()"
->Close</button>
+<div class="card-wrapper">
+  <ng-container *ngFor="let card of cards;">
+    <app-card
+      #cardEl
+      id = {{card?.id}}
+      title = {{card?.login}}
+      subtitle = {{card?.id}}
+      text = {{card?.repos_url}}
+      image = {{card?.avatar_url}}
+    ></app-card>
+  </ng-container>
+</div>
+<div class="button-wrapper">
+  <ng-container *ngFor="let i of closeBtnIterator;">
+    <button
+      #closeBtn
+      class="close-btn"
+      mat-button
+      color="warn"
+    >Close</button>
+  </ng-container>
+</div>

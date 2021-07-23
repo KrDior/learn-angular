@@ -5,26 +5,7 @@ import { fromEvent, Observable } from 'rxjs';
 import { map, startWith, take } from 'rxjs/operators';
 import { GitUsersService, User } from '../git-users.service';
 
-const mockedUsers = [  {
-  login: 'mojombo',
-  id: 1,
-  avatar_url: 'https://avatars.githubusercontent.com/u/1?v=4',
-  repos_url: 'https://api.github.com/users/mojombo/repos',
-},
-{
-  login: 'defunkt',
-  id: 2,
-  node_id: 'MDQ6VXNlcjI=',
-  avatar_url: 'https://avatars.githubusercontent.com/u/2?v=4',
-  repos_url: 'https://api.github.com/users/defunkt/repos',
-},
-{
-  login: 'pjhyett',
-  id: 3,
-  avatar_url: 'https://avatars.githubusercontent.com/u/3?v=4',
-  repos_url: 'https://api.github.com/users/pjhyett/repos',
-}];
-
+const DEFAULT_CARDS_VALUE = 3;
 @Component({
   selector: 'app-twitter',
   templateUrl: './twitter.component.html',
@@ -37,10 +18,11 @@ export class TwitterComponent implements OnInit, AfterViewInit, OnDestroy {
 
   public userSubscriptions = [];
   public cards: User[] = [];
+  public closeBtnIterator = [];
 
+  private valueOfCards = DEFAULT_CARDS_VALUE;
   private refreshClickStream$: Observable<Event>;
   private responseStream$: Observable<User[]>;
-  private valueOfCards = 3;
   private closeButtonsStreams$ = [];
 
   constructor(
@@ -49,6 +31,7 @@ export class TwitterComponent implements OnInit, AfterViewInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
+    this.closeBtnIterator = Array(this.valueOfCards);
   }
 
   ngAfterViewInit(): void {
@@ -103,7 +86,6 @@ export class TwitterComponent implements OnInit, AfterViewInit, OnDestroy {
       ),
       this.responseStream$,
       ]).pipe(
-        take(this.valueOfCards),
         map(([click, listUsers]) => this.getRandomUser(listUsers))
     );
   }
@@ -121,10 +103,6 @@ export class TwitterComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private setUserCard(suggestedUser: User, cardOrder): void {
-    console.log(suggestedUser, cardOrder);
     this.cards[cardOrder] = suggestedUser;
-  }
-
-  onCardClose(): void {
   }
 }
