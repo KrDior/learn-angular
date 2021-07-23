@@ -19,7 +19,7 @@ export class CardComponent implements OnInit {
   }
 
   onClose(): void {
-    this.closeCard.emit(this.id);
+    // this.closeCard.emit(this.id);
   }
 
 }

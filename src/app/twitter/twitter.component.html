@@ -2,37 +2,24 @@
   #refreshBtn
   class="refresh-btn"
   mat-fab color="warn"
-  (click)="refreshCards()"
 >
   <mat-icon>refresh</mat-icon>
 </button>
-<!-- <div *ngFor="let user of users$ | async | filterOnId: removedId">
+
+<div *ngFor="let card of cards; let i = index">
   <app-card
-    id = {{user.id}}
-    title = {{user.login}}
-    subtitle = {{user.id}}
-    text = {{user.repos_url}}
-    image = {{user?.avatar_url}}
-    (closeCard)="onCardClose($event)"
+    id = {{cards.id}}
+    title = {{cards.login}}
+    subtitle = {{cards.id}}
+    text = {{cards.repos_url}}
+    image = {{cards?.avatar_url}}
   ></app-card>
-</div> -->
-<div class="header">
-  <h2>Who to follow</h2><a href="#" class="refresh">Refresh</a>
+  <button
+    #closeBtn
+    class="close-btn"
+    mat-button
+    color="warn"
+    [attr.data-index]="i"
+    (click)="onCardClose(i)"
+  >Close</button>
 </div>
-<ul class="suggestions">
-  <li class="suggestion1">
-      <img />
-      <a href="#" target="_blank" class="username">this will not be displayed</a>
-      <button #suggestionClose1 class="close close1">x</button>
-  </li>
-  <li class="suggestion2">
-      <img />
-      <a href="#" target="_blank" class="username">neither this</a>
-      <button href="#" class="close close2">x</button>
-  </li>
-  <li class="suggestion3">
-      <img />
-      <a href="#" target="_blank" class="username">nor this</a>
-      <button href="#" class="close close3">x</button>
-  </li>
-</ul>
